@@ -1,84 +1,69 @@
-var scores =
-[60, 50, 60, 58, 54, 54, 
-    58, 50, 52, 54, 48, 69, 
-    34, 55, 51, 52, 44, 51, 
-    69, 64, 66, 55, 52, 61, 
-    46, 31, 57, 52, 44, 18, 
-    41, 53, 55, 61, 51, 44];
-
-    // var output;
-
-    // THIS IS THE FOR VERSION.
-
-    // for (var i = 0; i < scores.length; i++) {
-    //     output = "For Loop: Bubble Solution #" + i +  " :Score: " + scores[i];
-    //     console.log(output);
-    // }
-
-    var highscore = 0;
+var scores = [60, 50, 60, 58, 54, 54, 58, 50, 52, 54, 48, 69, 
+34, 55, 51, 52, 44, 51, 69, 64, 66, 55, 52, 61, 
+46, 31, 57, 52, 44, 18, 41, 53, 55, 61, 51, 44];
+function printAndGetHighScore(scores) {
+    var highScore = 0;
     var output;
     for (var i = 0; i < scores.length; i++) {
-        output = "Bubble Solution #" + i + " :High Score: " + scores[i];
+        output = "Bubble Solution: #" + i + " Score: " + scores[i];
         console.log(output);
-
-        if (scores[i] > highscore) {
-            highscore = scores[i];
-            output = "Bubble Solution #" + i + " :New High Score: " + scores[i];
+        if (scores[i] > highScore) {
+            highScore = scores[i];
         }
     }
-
+    return highScore;
+}
+function getBestResults(scores, highScore) {
     var bestSolutions = [];
     for (var i = 0; i < scores.length; i++) {
-        if (scores[i] === highscore) {
+        if (scores[i] == highScore) {
             bestSolutions.push(i);
         }
     }
+    return bestSolutions;
+}
 
-    console.log("");
-    console.log("Number of Bubble Tests: " + scores.length);
-    console.log("Highest Bubble Test Score: " + highscore);
-    console.log("Solutions With The Highest Scores: " + bestSolutions);
+var highScore = printAndGetHighScore(scores);
+console.log("");
+console.log("Number of Bubble Tests: " + scores.length);
+console.log("Highest Bubble Test Score: " + highScore);
 
+var bestSolutions = getBestResults(scores, highScore);
+console.log("Solution Numbers With The Highest Score: " + bestSolutions);
 
+console.log("===============");
 
+var costs = [.25, .27, .25, .25, .25, .25, .33, .31, .25, .29, .27, .22, 
+    .31, .25, .25, .33, .21, .25, .25, .25, .28, .25, .24, .22, 
+    .20, .25, .30, .25, .24, .25, .25, .25, .27, .25, .26, .29];
 
+    function getMostCostEffectiveSolution(scores, costs, highScore) {
+        var cost = 100;
+        var index;
+        for (var i = 0; i < scores.length; i++) {
+            if (scores[i] == highScore && costs[i] < cost) {
+                cost = costs[i];
+                index = i;
+            }
+        }
+    return index;
+    }
 
-    // THIS IS THE WHILE VERSION.
+var mostCostEffective = getMostCostEffectiveSolution(scores, costs, highScore);
+console.log("Bubble Solution #" + mostCostEffective + " is the most cost effective solution");
 
-    // var i = 0;
-    // while (i < scores.length) {
-    //     output = "While Loop: Bubble solution #" + i + " Score: " + scores[i];
-    //     console.log(output);
-    //     i = i + 1;
-    // }
+// var arrayTest = [];
+// console.log(arrayTest.length);
 
+// arrayTest[0] =true;
+// arrayTest[5] =true;
+// console.log(arrayTest.length);
+// console.log(arrayTest);
 
+// console.log("===============");
+// var arrayTest = [1,2,3,4];
+// var last = arrayTest.length - 1;
+// var recent = arrayTest[last];
 
-    // THIS IS THE DO-WHILE VERSION.
+// console.log(recent,last);
 
-    // var i = 0;
-    // do {
-    //     output = "Do-While Loop: Bubble solution #" + i + " Score: " + scores[i];
-    //     console.log(output);
-    //     i = i + 1;
-    // } while (i < scores.length);
-
-
-
-    // NOT TO SELF:  ALL 3 VERSIONS OF THE LOOP WORK.
-
-
-    // var testArray = [];
-    // testArray [0] = "item1";
-    // testArray [1] = "item2";
-    // testArray [2] = "item3";
-    // console.log("");  // just a console spacer
-    // console.log("");
-    // console.log(testArray); // expexted: 3, and a list of all the items in the array
-    // console.log(testArray[1]); // expected: item2
-    // console.log(testArray.length); //expected: 3
-
-    // testArray.push("item4");
-    // console.log(testArray); // expected: 4, and a list of all the items in the array with item4 added
-    // console.log(testArray[3]);
-    // console.log(testArray.length);
